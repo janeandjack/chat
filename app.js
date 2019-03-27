@@ -27,7 +27,9 @@ io.attach(server);
 
 
 io.on('connection', function(socket){
-    console.log('a user has connected', socket);
+    console.log('a user has connected');
+
+    socket.emit('connect', {sID:  `${socket.id}`, message: 'new connection'});
 
     socket.on('disconnect', function(){
         console.log('a user has disconnected');
