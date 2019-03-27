@@ -29,9 +29,19 @@ io.attach(server);
 io.on('connection', function(socket){
     console.log('a user has connected');
 
-    socket.emit('connect', {sID:  `${socket.id}`, message: 'new connection'});
+    socket.emit('connected', { sID:  `${socket.id}`, message: 'new connection'} );
 
-    socket.on('disconnect', function(){
+
+    //listen for an incoming message from anyone connected to the app
+    socket.on('chat message', function(msg) {
+    console.log('message: ', msg, 'socket:', socket.id);
+
+    //sent the messsage to everyone connected to the app
+    io.emit('chat message', { id: `${socket.id}`, message: msg });
+
+})
+
+    socket.on('disconnect', function() {
         console.log('a user has disconnected');
     });
 });
