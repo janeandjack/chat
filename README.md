@@ -14,7 +14,7 @@ User also can use the url:https://chaochao-li-chat-app.herokuapp.com/ to join an
  1. Node,js
  2. Gulp
  3. Sass
-
+ 4. Socket.io
 ### Developing tool:
  1. Visual Studio Code
  2. Github
