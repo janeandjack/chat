@@ -3,12 +3,15 @@ export const UserconnectionMsg = {
     props: ['msg'],
 
     template: `
-        <p v-if="matchedID" class="alert">
-       
-           
-            <span class="smaller">({{msg.id}})</span>
-            joined channel
-        </p>
+    <p v-if="matchedID" class="alert">
+
+    <span>({{msg.id}})</span>
+    joined channel
+</p>
+<p v-else class="alert">
+    <span>({{msg.id}})</span>
+    joined channel
+</p>
 
     `,
 
@@ -24,13 +27,15 @@ export const UserdisconnectionMsg = {
     props: ['msg'],
 
     template: `
-        <p v-if="matchedID" class="notification">
-       
-   
-            <span class="smaller">({{msg.id}})</span>
-            left hannel
-        </p>
-
+    <p v-if="matchedID" class="alert">
+  
+    <span>({{msg.id}})</span>
+    left channel
+</p>
+<p v-else class="alert">
+    <span>({{msg.id}})</span>
+    left channel
+</p>
     `,
 
     data: function() {
