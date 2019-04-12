@@ -17,6 +17,7 @@ In the furture, i will add more functions in Chat App. For example, send files t
  2. Gulp
  3. Sass
  4. Socket.io
+ 5. Vue.js
 ### Developing tool:
  1. Visual Studio Code
  2. Github
