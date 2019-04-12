@@ -27,8 +27,8 @@ io.attach(server);
 
 
 io.on('connection', function(socket){
-    console.log('a user has connected');
-
+    // console.log('a user has connected');
+   io.emit('connections', Object.keys(io.sockets.connected).length);
     socket.emit('connected', { sID:  `${socket.id}`, message: 'new connection'} );
 
     io.emit('alert', {

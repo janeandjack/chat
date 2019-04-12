@@ -23,11 +23,11 @@ function appendMessage(message) {
 }
 
 function appendalert(message) {
-    console.log('alert');
-    //new.js has to comp, if sentence to decide which comp going to
+    // console.log('alert');
+    //new.js has two comp, if sentence to decide which comp going to
     if (message.event === 'userconnection') {
         message.type = 'userconnectionMsg';
-    } else if (message.event === 'userdisconnection') {
+    } else {
         message.type = 'userdisconnectionMsg';
     } 
     vm.messages.push(message);
@@ -40,7 +40,8 @@ const vm = new Vue({
         nickname: "",
         message: "",
         messages: [],
-        typing: false
+        typing: false,
+        connections: 0
     },
  watch:{
     newmessage(value){
@@ -59,6 +60,9 @@ const vm = new Vue({
         }
     },
     created() {
+        socket.on('connections',(data) =>{
+            this.connections = data
+        })
         //watch strat tying
         //it is not working at now
         socket.on('typing', () => {
@@ -82,5 +86,5 @@ socket.on('connected', logConnect);
 
 socket.addEventListener('chat message', appendMessage);
 socket.addEventListener('alert', appendalert);
-socket.addEventListener('disconnect', appendMessage);
+socket.addEventListener('disconnect', appendalert);
 
