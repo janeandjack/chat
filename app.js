@@ -31,8 +31,20 @@ io.on('connection', function(socket){
 
     socket.emit('connected', { sID:  `${socket.id}`, message: 'new connection'} );
 
+    io.emit('alert', {
+        id: `${socket.id}`,
+     
+        event: 'userconnection'
+    });
+   
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', (data))
+    });
 
-    //listen for an incoming message from anyone connected to the app
+    socket.on('stopTyping', (data) => {
+        socket.broadcast.emit('stopTyping', (data))
+    });
+
     socket.on('chat message', function(msg) {
     console.log('message: ', msg, 'socket:', socket.id);
 
@@ -43,5 +55,13 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function() {
         console.log('a user has disconnected');
+        io.emit('alert', {
+            id: `${socket.id}`,
+         
+            event: 'userdisconnection'
+        });
+
+        // remove the previously-created random color for the disconnected socket.id
+ 
     });
 });
