@@ -4,6 +4,7 @@ Use Node and socket.io to create an interactive chat application. Design an enga
 for the application using HTML / CSS; add transitions / interesting micro transactions using
 a combination of JS and CSS.
 
+User also can use the url:https://chaochao-li-chat-app.herokuapp.com/ to join and test the Chat App.
 ## Features
 1. Show user join or left the channel
 2. Show the total number of the people online.
